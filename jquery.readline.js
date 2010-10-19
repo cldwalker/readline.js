@@ -49,14 +49,12 @@
   // * readlineCss: css for readline, defaults to jquery.readline.css
   $.fn.readline = function(options) {
     options = $.extend({
-      startCompletion: function(val) {},
       autocompleteCss: 'jquery.ui.autocomplete.css',
       readlineCss: 'jquery.readline.css'
     }, options);
     input = $(this);
     var prompt_id = this.selector + '_prompt';
-    startCompletion = options.startCompletion;
-    $('head').append("<link href='"+options.autocompleteCss+"' rel='stylesheet' type='text/css'/>").
+    $('head:first').append("<link href='"+options.autocompleteCss+"' rel='stylesheet' type='text/css'/>").
       append("<link href='"+options.readlineCss+"' rel='stylesheet' type='text/css'/>");
 
     input.
@@ -67,7 +65,6 @@
       bind('keydown', 'ctrl+r', search_history).
       bind('keydown', 'ctrl+g', exit_search_history).
       bind('keydown', 'ctrl+u', clear_line).
-      bind('keydown', 'tab', tab_complete).
       autocomplete({
         source: autocomplete_history_source,
         disabled: true,
@@ -76,7 +73,9 @@
       before('<span id="'+prompt_id.replace('#', '')+'"></span>');
 
     input_prompt = $(prompt_id);
-
+    if (startCompletion = options.startCompletion) {
+      input.bind('keydown', 'tab', tab_complete);
+    }
     return this;
   };
 
