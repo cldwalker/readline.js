@@ -43,17 +43,21 @@
     response(get_search_history(request.term));
   };
 
+  // Options:
+  // * startCompletion: function to start a tab completion, given the element's current value
+  // * autocompleteCss: css for jquery-ui, defaults to jquery.ui.autocomplete.css
+  // * readlineCss: css for readline, defaults to jquery.readline.css
   $.fn.readline = function(options) {
     options = $.extend({
-      prompt_id: this.selector + '_prompt',
       startCompletion: function(val) {},
-      autocomplete_css: 'jquery.ui.autocomplete.css',
-      readline_css: 'jquery.readline.css'
+      autocompleteCss: 'jquery.ui.autocomplete.css',
+      readlineCss: 'jquery.readline.css'
     }, options);
     input = $(this);
+    var prompt_id = this.selector + '_prompt';
     startCompletion = options.startCompletion;
-    $('head').append("<link href='"+options.autocomplete_css+"' rel='stylesheet' type='text/css'/>").
-      append("<link href='"+options.readline_css+"' rel='stylesheet' type='text/css'/>");
+    $('head').append("<link href='"+options.autocompleteCss+"' rel='stylesheet' type='text/css'/>").
+      append("<link href='"+options.readlineCss+"' rel='stylesheet' type='text/css'/>");
 
     input.
       bind('keydown', 'ctrl+p', previous_line).
@@ -69,9 +73,9 @@
         disabled: true,
         close: function(event, ui) { exit_search_history(); return true; }
       }).
-      before('<span id="'+options.prompt_id.replace('#', '')+'"></span>');
+      before('<span id="'+prompt_id.replace('#', '')+'"></span>');
 
-    input_prompt = $(options.prompt_id);
+    input_prompt = $(prompt_id);
 
     return this;
   };
