@@ -3,11 +3,13 @@
     <title>readline.js</title>
     <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js' type='text/javascript'></script>
     <script src='jquery.hotkeys.js' type='text/javascript'></script>
-    <script src="jquery.ui.autocomplete.min.js"></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js' type='text/javascript'></script>
     <script src='jquery.readline.js' type='text/javascript'></script>
     <script type='text/javascript'>
       $(document).ready( function() {
-        $('#input').readline().parent('form').submit(function() {
+        $('#input').readline({
+          autocompleteCss: 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/themes/smoothness/jquery-ui.css'
+        }).parent('form').submit(function() {
           $.readline.addHistory($('#input').val());
           $('#input').val('');
           return false;

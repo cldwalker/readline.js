@@ -2,7 +2,7 @@ Description
 ===========
 jQuery plugin which adds basic readline functionality to any html element. Goal is to mimic
 essential readline behavior from the [original](http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html).
-Uses jquery UI autocompletion widget and the hotkeys.js plugin for keybindings.
+Uses jquery UI 1.8.5 autocomplete widget and the hotkeys.js plugin for keybindings.
 
 Setup
 =====
