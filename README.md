@@ -11,7 +11,7 @@ Add javascript tags:
 
     <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js' type='text/javascript'></script>
     <script src='jquery.hotkeys.js' type='text/javascript'></script>
-    <script src="jquery.ui.autocomplete.min.js"></script>
+    <script src="jquery.ui.autocomplete.min.js" type='text/javascript'></script>
     <script src='jquery.readline.js' type='text/javascript'></script>
 
 Assuming you have an html element with id #input:
