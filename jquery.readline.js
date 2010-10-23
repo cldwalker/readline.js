@@ -31,7 +31,7 @@
   var get_search_history = function(term) {
     var results = [];
     $.each(readline_history.reverse(), function(key,value) {
-      value.match(term) && results.push(value);
+      (value.indexOf(term) != -1) && results.push(value);
     });
     return results;
   };
