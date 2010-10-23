@@ -44,7 +44,6 @@ Todo
 ====
 * Fix history not saving element's current text
 * Forward/backward word keybindings
-* Preserve time order when searching history
 * Fix exiting search history on an active menu item
 * Display tab completion in multiple columns
 * Deal with autocompletion dependence on images

@@ -30,7 +30,7 @@
   }
   var get_search_history = function(term) {
     var results = [];
-    $.each(readline_history, function(key,value) {
+    $.each(readline_history.reverse(), function(key,value) {
       value.match(term) && results.push(value);
     });
     return results;
@@ -91,7 +91,7 @@
       input.val(completions[0]);
       onclose();
     } else {
-      input.autocomplete('option', { close: onclose, source: completions }).
+      input.autocomplete('option', { close: onclose, source: completions.sort() }).
         autocomplete('search');
     }
   };
